@@ -1,0 +1,15 @@
+{
+    "name": "types__g",
+    "version": "1.0.0",
+    "description": "__g types checking",
+    "type": "module",
+    "types": "./index.d.ts",
+    "keywords": [
+        "__g"
+    ],
+    "author": "twinkle",
+    "license": "ISC",
+    "devDependencies": {
+        "typescript": "^4.9.4"
+    }
+}
