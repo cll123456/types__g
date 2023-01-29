@@ -2,7 +2,7 @@
     "compilerOptions": {
         "module": "ES2022",
         "lib": [
-            "es6",
+            "ESNext",
             "DOM"
         ],
         "noImplicitAny": true,

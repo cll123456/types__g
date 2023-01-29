@@ -1,4 +1,4 @@
-import { AirCityAPIOptions, AirCityPlayerOptions } from './common/aircityPlay/AirCityPlayInterface'
+import { AirCityAPIOptions, AirCityPlayerClass, AirCityPlayerOptions } from './common/aircityPlay/AirCityPlayInterface'
 
 /**
  * Construct an object of the AirCityAPI class for the initialization of the API interface.
@@ -16,23 +16,6 @@ declare class AirCityAPI {
     options: AirCityAPIOptions
 }
 
-declare class AirCityPlayer {
-    /**
-     * Server address in the following format IP:Port (where Port is the instance's WebSocket service port number)
-     */
-    host: string
-    /**
-     * Initialization options, supporting the following properties (all optional)
-     */
-    options: AirCityPlayerOptions
-    /**
-     *
-     * @param host  service address, in the following format IP:Port, for example: '192.168.1.29:8082';
-     * @param options initialization option
-     */
-    constructor(host: string, options: AirCityPlayerOptions)
-}
-
 /**
  * Its interface is generally called via the global variable __g.
  *
@@ -42,14 +25,10 @@ declare namespace __g {
     const version: number
 }
 
-/**
- * rewrite Window type
- */
-declare var Window: {
-    prototype: Window
-    new (): Window
-    /**
-     * AirCityPlayer
-     */
-    AirCityPlayer: AirCityPlayer
+declare global {
+    interface Window {
+        AirCityPlayer: new (host: string, options: AirCityPlayerOptions) => AirCityPlayerClass
+    }
 }
+
+declare type AirCityPlayerTypes = AirCityPlayerClass

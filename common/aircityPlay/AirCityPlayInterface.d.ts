@@ -2,6 +2,75 @@ import { MouseKeyEventEnum } from '../utils/conmmonEnum'
 import { CommonObject } from '../utils/common'
 
 /**
+ * AirCity Player Class
+ */
+export declare class AirCityPlayerClass {
+    /**
+     * Server address in the following format IP:Port (where Port is the instance's WebSocket service port number)
+     */
+    host: string
+    /**
+     * Initialization options, supporting the following properties (all optional)
+     */
+    options: AirCityPlayerOptions
+    /**
+     *
+     * @param host  service address, in the following format IP:Port, for example: '192.168.1.29:8082';
+     * @param options initialization option
+     */
+    constructor(host: string, options: AirCityPlayerOptions)
+    /**
+     * destory instance
+     *
+     * reason {string}  if you specify to show debug information when initializing AirCityPlayer, you can show the reason of destruction in the interface.
+     */
+    destroy: (reason?: string) => void
+    /**
+     * Get AirCity API interface
+     */
+    getAPI: () => void
+    /**
+     * Get the address of the server(ip:port)
+     */
+    getHost: () => string
+    /**
+     * Get information about the currently connected instance
+     */
+    getInstanceInfo: () => InstanceInfoRes
+    /**
+     *Get the size of the video stream
+     *
+     * Return width and height information
+     *
+     *  { height: number; width: number }
+     */
+    getVideoSize: () => { height: number; width: number }
+    /**
+     * Reorganization of the layout
+     */
+    resize: () => void
+    /**
+     * Set whether to enable the callback function for keyboard and mouse interaction events
+     */
+    setActionEventEnabled: (bEnable: boolean) => void
+    /**
+     * Set the instance option, call this interface to switch the instance or project file used without refreshing the page
+     */
+    setInstanceOptions: (o: { iid: string; pid: string }) => boolean
+    /**
+     * Set the target object of the keyboard interaction event
+     */
+    setKeyEventTarget: (newVal: KeyEventTargetValue) => void
+    /**
+     *Set the size of the video stream. If adaptive is enabled in the cloud rendering backend, then the resolution of the video stream will also be automatically adjusted.
+     *
+     * w {number} width
+     * h {number} height
+     */
+    setResolution: (w: number, h: number) => void
+}
+
+/**
  * AirCityAPI class options
  */
 export interface AirCityAPIOptions {
@@ -99,6 +168,61 @@ export interface EventType {
 }
 
 /**
+ * instance infomation
+ */
+export interface InstanceInfoRes {
+    /**
+     * result type
+     */
+    type: string
+    /**
+     * ID of the cloud rendering instance
+     */
+    iid: string
+    /**
+     *  pecify the project ID of the instance to be loaded.
+     */
+    pid: number
+    /**
+     * project name
+     */
+    project: string
+    /**
+     * current node ip info
+     */
+    nodeIP: string
+    /**
+     * is adjust resolution
+     */
+    adjustResolution: boolean
+    /**
+     * is limit max resolution
+     */
+    limitMaxResolution: boolean
+    /**
+     * resolution x size
+     */
+    resX: number
+    /**
+     * resolution y size
+     */
+    resY: number
+    /**
+     * kick out in minutes
+     */
+    kickOutInMinutes: number
+    /**
+     * is locked
+     */
+    locked: boolean
+}
+
+/**
+ * key event target value
+ */
+export type KeyEventTargetValue = 'document' | 'video' | 'none'
+
+/**
  * AirCityPlayer options interface
  */
 export interface AirCityPlayerOptions {
@@ -151,13 +275,13 @@ export interface AirCityPlayerOptions {
      *
      */
     /** @deprecated the keyEventReceiver is deprecated, please use keyEventTarget  */
-    keyEventReceiver?: 'document' | 'video' | 'none'
+    keyEventReceiver?: KeyEventTargetValue
     /**
      *  This property is used to set the keyboard's role object: video tag (video), web document (document), disabled (none). Users can set the appropriate keyboard interaction object according to their own application scenarios.
      *
      * default: 'video'
      */
-    keyEventTarget?: 'document' | 'video' | 'none'
+    keyEventTarget?: KeyEventTargetValue
     /**
      *  Set the access password of the instance, if the service sets the password, then the client needs to provide the correct password to connect to the instance
      */
