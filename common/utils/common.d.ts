@@ -1,6 +1,6 @@
 /**
  * common object type
  */
-export type commonObject = {
+export type CommonObject = {
     [key: string]: unknown | any
 }

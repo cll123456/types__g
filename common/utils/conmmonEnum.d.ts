@@ -1,7 +1,7 @@
 /**
  * mouse and keyboard events enums
  */
-export enum mouseKeyEventEnum {
+export enum MouseKeyEventEnum {
     /**
      * mouseenter
      */

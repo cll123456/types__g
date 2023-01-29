@@ -1,5 +1,5 @@
-import { mouseKeyEventEnum } from '../utils/conmmonEnum'
-import { commonObject } from '../utils/common'
+import { MouseKeyEventEnum } from '../utils/conmmonEnum'
+import { CommonObject } from '../utils/common'
 
 /**
  * AirCityAPI class options
@@ -26,7 +26,7 @@ export interface AirCityAPIOptions {
      *The callback function used to set event handling can also be set via the setEventCallback method
      * @returns {void}
      */
-    onEvent?: (e: onEventType) => void
+    onEvent?: (e: EventType) => void
     /**
      *  Callback method for receiving version information from the cloud rendering server
      * @returns
@@ -37,6 +37,10 @@ export interface AirCityAPIOptions {
      * to use English, please set the property to "en"
      */
     language?: 'zh' | 'en'
+    /**
+     * the options event hander
+     */
+    actionEventHander?: MouseKeyListenerObj
 }
 
 /**
@@ -59,7 +63,7 @@ export interface AirCityAPIOptions {
  * eventtype: "LeftMouseButtonClick"
  *
  */
-export interface onEventType {
+export interface EventType {
     /**
      * Maximum range coordinate of click, such as [0, 0, 0]
      */
@@ -102,7 +106,7 @@ export interface AirCityPlayerOptions {
      * HTML element ID (it will be used as the parent of the Video tag to be created), if this parameter is not set,
      * no video stream will be transmitted, only API calls will be made
      */
-    domId: string
+    domId?: string
     /**
      * ID of the cloud rendering instance, this attribute is available in two cases.
      *
@@ -117,7 +121,7 @@ export interface AirCityPlayerOptions {
      *
      * Note: If the project file is locked in the instance setting, here if the specified pid is another project, it will cause the switch project to fail.
      */
-    pid?: number
+    pid?: number | null
     /**
      * Specifies whether to reset the instance. If reset is set to true, every connection (including refresh) will get a brand new instance
      *
@@ -135,11 +139,19 @@ export interface AirCityPlayerOptions {
      *
      *  AirCityAPI object will be created automatically when initializing AirCityPlayer, so you don't need to create it separately, you can get it by getAPI() later.
      */
-    apiOptions: AirCityAPIOptions
+    apiOptions?: AirCityAPIOptions
     /**
      *  Used to set some event callback functions, currently the following properties can be set.
      */
     events?: AirCityPlayerOptionsUIEvent
+    /**
+     * This property is used to set the keyboard's role object: video tag (video), web document (document), disabled (none). Users can set the appropriate keyboard interaction object according to their own application scenarios.
+     *
+     * default: 'video'
+     *
+     */
+    /** @deprecated the keyEventReceiver is deprecated, please use keyEventTarget  */
+    keyEventReceiver?: 'document' | 'video' | 'none'
     /**
      *  This property is used to set the keyboard's role object: video tag (video), web document (document), disabled (none). Users can set the appropriate keyboard interaction object according to their own application scenarios.
      *
@@ -153,7 +165,7 @@ export interface AirCityPlayerOptions {
     /**
      * Used to add additional information to the URL of the WebSocket connection (e.g. authentication authorization information, etc.)
      */
-    urlExtraInfo?: commonObject
+    urlExtraInfo?: CommonObject
     /**
      *Set whether to use the built-in cursor, if set to false, the video window will always display the arrow style cursor without using the built-in cursor.
      *
@@ -165,13 +177,24 @@ export interface AirCityPlayerOptions {
      *
      * default: false
      */
-    useHttps: boolean
+    useHttps?: boolean
     /**
      * Set the language, optional value "zh", "en", currently support Simplified Chinese, English, the default is Chinese, to use English, please set the property to "en"
      *
      * default: zh
      */
-    language: 'zh' | 'en'
+    language?: 'zh' | 'en'
+    /**
+     * the callback of aircity connect close
+     * @param e
+     * @returns
+     */
+    onclose?: (e: CloseEventParms) => void
+    /**
+     * the callback of aircity connect loaded
+     * @returns
+     */
+    onloaded?: () => void
 }
 
 /**
@@ -267,13 +290,13 @@ export interface AirCityPlayerOptionsUIEvent {
      *
      * @returns
      */
-    onRtcStatsReport: (e: onRtcStatsReportParams) => void
+    onRtcStatsReport: (e: RtcStatsReportParams) => void
     /**
      * Used to set keyboard and mouse interaction events, which can be readily accessed later via the AirCityPlayer#setActionEventEnabled Perform switch.
      *
      * useless
      */
-    mouseKeyListener?: mouseKeyListenerObj
+    mouseKeyListener?: MouseKeyListenerObj
 }
 
 /**
@@ -306,7 +329,7 @@ export interface AirCityPlayerOptionsUIEvent {
  *    timestampStart: 1674033181220
  *
  */
-export interface onRtcStatsReportParams {
+export interface RtcStatsReportParams {
     /**
      * bitrate of vedio stream
      */
@@ -364,63 +387,156 @@ export interface onRtcStatsReportParams {
 /**
  * mouseKeyListener interface
  */
-export interface mouseKeyListenerObj {
+export interface MouseKeyListenerObj {
     /**
      * mouse enter callback function
-     * @param e {mouseKeyListenerEvent}
+     * @param e {MouseKeyListenerEvent}
      * @returns
      */
-    onMouseEnter: (e: mouseKeyListenerEvent) => void
+    onMouseEnter: (e: MouseKeyListenerEvent) => void
     /**
      * mouse leave callback function
-     * @param e {mouseKeyListenerEvent}
+     * @param e {MouseKeyListenerEvent}
      * @returns
      */
-    onMouseLeave: (e: mouseKeyListenerEvent) => void
+    onMouseLeave: (e: MouseKeyListenerEvent) => void
     /**
      * mouse move callback function
-     * @param e {mouseKeyListenerEvent}
+     * @param e {MouseKeyListenerEvent}
      * @returns
      */
-    onMouseMove: (e: mouseKeyListenerEvent) => void
+    onMouseMove: (e: MouseKeyListenerEvent) => void
     /**
      * mouse down callback function
-     * @param e {mouseKeyListenerEvent}
+     * @param e {MouseKeyListenerEvent}
      * @returns
      */
-    onMouseDown: (e: mouseKeyListenerEvent) => void
+    onMouseDown: (e: MouseKeyListenerEvent) => void
     /**
      * mouse up callback function
-     * @param e {mouseKeyListenerEvent}
+     * @param e {MouseKeyListenerEvent}
      * @returns
      */
-    onMouseUp: (e: mouseKeyListenerEvent) => void
+    onMouseUp: (e: MouseKeyListenerEvent) => void
     /**
      * key down callback function
-     * @param e {mouseKeyListenerEvent}
+     * @param e {MouseKeyListenerEvent}
      * @returns
      */
-    onKeyDown: (e: mouseKeyListenerEvent) => void
+    onKeyDown: (e: MouseKeyListenerEvent) => void
     /**
      * key up callback function
-     * @param e {mouseKeyListenerEvent}
+     * @param e {MouseKeyListenerEvent}
      * @returns
      */
-    onKeyUp: (e: mouseKeyListenerEvent) => void
+    onKeyUp: (e: MouseKeyListenerEvent) => void
     /**
      * key press callback function
-     * @param e {mouseKeyListenerEvent}
+     * @param e {MouseKeyListenerEvent}
      * @returns
      */
-    onKeyPress: (e: mouseKeyListenerEvent) => void
+    onKeyPress: (e: MouseKeyListenerEvent) => void
 }
 
 /**
  * mouse and keyboard listener event
  */
-export interface mouseKeyListenerEvent extends MouseEvent {
+export interface MouseKeyListenerEvent extends MouseEvent {
     /**
      * operate type
      */
-    type: mouseKeyEventEnum
+    type: MouseKeyEventEnum
+}
+
+/**
+ * connect close param
+ */
+export interface CloseEventParms {
+    /**
+     * is trusted
+     *
+     * default: true
+     */
+    isTrusted: boolean
+    /**
+     * is bubbles
+     *
+     * default: false
+     */
+    bubbles: boolean
+    /**
+     * is cancel bubble
+     *
+     * default: false
+     */
+    cancelBubble: boolean
+    /**
+     * is cancel lable
+     *
+     * default: false
+     */
+    cancelable: boolean
+    /**
+     * close status code
+     *
+     * values: [1006, 1008, 1013, 4e3, 4001, 4002, 4003, 4004, 4005, 4006, 4007, 4008, 4009, 4100, 4101, 4102, 4103, 4105, 4107]
+     */
+    code: number
+    /**
+     * is composed
+     *
+     * default: false
+     */
+    composed: boolean
+    /**
+     * current target
+     */
+    currentTarget: WebSocket
+    /**
+     * is default prevent
+     *
+     * default: false
+     */
+    defaultPrevented: boolean
+    /**
+     * the event phase
+     *
+     * default: 0
+     */
+    eventPhase: number
+    /**
+     * close reason
+     *
+     */
+    reason: string
+    /**
+     * is return value
+     *
+     * default: true
+     */
+    returnValue: boolean
+    /**
+     * src element
+     */
+    srcElement: WebSocket
+    /**
+     * target dom
+     */
+    target: WebSocket
+    /**
+     * time stamp
+     */
+    timeStamp: string
+    /**
+     * close type
+     *
+     * default: close
+     */
+    type: string
+    /**
+     * is clean
+     *
+     * default: true
+     */
+    wasClean: boolean
 }
