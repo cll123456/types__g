@@ -1,5 +1,6 @@
 import { MouseKeyEventEnum } from '../utils/conmmonEnum'
 import { CommonObject } from '../utils/common'
+import { ApiParentInterface } from './getApiInterface'
 
 /**
  * AirCity Player Class
@@ -28,7 +29,7 @@ export declare class AirCityPlayerClass {
     /**
      * Get AirCity API interface
      */
-    getAPI: () => void
+    getAPI: () => ApiParentInterface
     /**
      * Get the address of the server(ip:port)
      */

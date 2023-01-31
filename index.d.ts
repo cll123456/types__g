@@ -1,3 +1,4 @@
+import { ApiParentInterface } from 'common/aircityPlay/getApiInterface'
 import { AirCityAPIOptions, AirCityPlayerClass, AirCityPlayerOptions } from './common/aircityPlay/AirCityPlayInterface'
 
 /**
@@ -32,3 +33,6 @@ declare global {
 }
 
 declare type AirCityPlayerTypes = AirCityPlayerClass
+declare type ApiParentInterfaceTypes = ApiParentInterface
+declare type AirCityAPIOptionsTypes = AirCityAPIOptions
+declare type AirCityPlayerOptionsTypes = AirCityPlayerOptions
