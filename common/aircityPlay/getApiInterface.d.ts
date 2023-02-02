@@ -1,7 +1,7 @@
 /**
  * api parent interface
  */
-export interface ApiParentInterface {
+export interface ApiAirCityParentInterface {
     /**
      * Close the WebSocket connection
      *
@@ -9,12 +9,12 @@ export interface ApiParentInterface {
      *  If the destroy method is called, the connection will not try to reconnect after it is disconnected, and you need to refresh the *page before the connection will continue.
      * @returns
      */
-    destroy: () => void
+    destroy(): void
     /**
      * Get the full version number of the SDK, for example: 5.3.0413
      * @returns   5.3.0413
      */
-    getVersion: () => string
+    getVersion(): string
     /**
      * Register the JS script to be executed when each frame is rendered
      *

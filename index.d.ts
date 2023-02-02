@@ -1,4 +1,4 @@
-import { ApiParentInterface } from 'common/aircityPlay/getApiInterface'
+import { ApiAirCityParentInterface } from './common/aircityPlay/getApiInterface'
 import { AirCityAPIOptions, AirCityPlayerClass, AirCityPlayerOptions } from './common/aircityPlay/AirCityPlayInterface'
 
 /**
@@ -30,9 +30,13 @@ declare global {
     interface Window {
         AirCityPlayer: new (host: string, options: AirCityPlayerOptions) => AirCityPlayerClass
     }
+    type ApiParentInterfaceTypes = ApiAirCityParentInterface
+    type AirCityPlayerTypes = AirCityPlayerClass
+    type AirCityAPIOptionsTypes = AirCityAPIOptions
+    type AirCityPlayerOptionsTypes = AirCityPlayerOptions
 }
 
 declare type AirCityPlayerTypes = AirCityPlayerClass
-declare type ApiParentInterfaceTypes = ApiParentInterface
 declare type AirCityAPIOptionsTypes = AirCityAPIOptions
 declare type AirCityPlayerOptionsTypes = AirCityPlayerOptions
+declare type ApiParentInterfaceTypes = ApiAirCityParentInterface
