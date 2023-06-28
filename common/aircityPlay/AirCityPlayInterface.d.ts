@@ -2,6 +2,8 @@ import { MouseKeyEventEnum } from '../utils/conmmonEnum'
 import { CommonObject } from '../utils/common'
 import { ApiAirCityParentInterface } from './getApiInterface'
 
+// 需要把注释改成中文
+
 /**
  * AirCity Player Class
  */
