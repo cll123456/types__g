@@ -4,6 +4,7 @@
     "description": "__g types checking",
     "type": "module",
     "types": "./index.d.ts",
+    "main": "./index.ts",
     "keywords": [
         "__g"
     ],

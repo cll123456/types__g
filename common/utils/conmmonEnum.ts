@@ -97,7 +97,7 @@ export enum APIErrorCode {
      */
     RESOURCE_NOT_FOUND = 3,
     /**
-     * AcpProjWKTNotSet
+     * 工程未设置坐标系
      */
     ACP_PROJ_WKT_NOT_SET = 4,
     /**
@@ -690,4 +690,33 @@ export enum Color {
      * 黑色
      */
     Black = 'RGB(0,0,0)'
+}
+
+/**
+ * 地图样式
+ *
+ * Campass	number	0	
+指南针
+
+SmallMap	number	1	
+鹰眼图
+
+
+BigMap	number	2	
+大地图
+
+ */
+export enum MapMode {
+    /**
+     * 指南针
+     */
+    Campass = 0,
+    /**
+     * 鹰眼图
+     */
+    SmallMap = 1,
+    /**
+     * 鹰眼图
+     */
+    BigMap = 2
 }

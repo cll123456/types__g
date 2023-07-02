@@ -1,4 +1,4 @@
-import { APIErrorCode } from './../../utils/conmmonEnum.d'
+import { APIErrorCode } from './../../utils/conmmonEnum'
 /**
  * 返回结果的基类
  */
@@ -32,7 +32,7 @@ export interface BaseOptions {
     /**
      * 字符串类型的ID
      */
-    id: string
+    id: string | number | symbol | any
     /**
      * 可选，Group分组
      */
