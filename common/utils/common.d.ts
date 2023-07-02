@@ -1,5 +1,3 @@
-import { APIErrorCode } from './conmmonEnum'
-
 /**
  * common object type
  */
