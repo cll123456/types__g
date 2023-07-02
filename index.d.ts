@@ -39,6 +39,7 @@ import { ICamera } from './common/classes/camera/index'
 import { ApiAirCityParentInterface } from './common/aircityPlay/getApiInterface'
 import { AirCityAPIOptions, AirCityPlayerClass, AirCityPlayerOptions } from './common/aircityPlay/AirCityPlayInterface'
 import { IBeam } from './common/classes/beam/index'
+import { APIErrorCode, CloudStatus, Color } from 'common/utils/conmmonEnum'
 /**
  * Construct an object of the AirCityAPI class for the initialization of the API interface.
  * 
@@ -248,6 +249,18 @@ declare global {
     }
 
     const __g: IG
+    /**
+     * 颜色
+     */
+    const Color: Color
+    /**
+     * Cloud的运行状态
+     */
+    const CloudStatus: CloudStatus
+    /**
+     *WebSocket接口调用的错误代码
+     */
+    const APIErrorCode: APIErrorCode
 }
 
 /**
