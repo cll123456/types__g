@@ -43,9 +43,7 @@ declare global {
         /**
          * DigitalTwinAPI
          */
-        DigitalTwinAPI: new (host: string, options: AirCityPlayerOptions) => AirCityPlayerClass
-
-        Color: Color
+        DigitalTwinPlayer: new (host: string, options: AirCityPlayerOptions) => AirCityPlayerClass
     }
 
     const __g: IG
