@@ -6,6 +6,50 @@ export interface IMarker {
     [key: string]: unknown | any
     /**
      * 添加一个或多个标注点 调用时注意：单次创建的Marker对象数量不要超过5000个，在一个工程内创建的Marker对象总数量不要超过20万个。
+     * 
+     *```ts
+    let o1:IMarkerOptions = {
+        id: 'm1',
+        groupId: 'markerAdd',
+        coordinate: [492693.75, 2491803.25, 20],//坐标位置
+        coordinateType: 0,//默认0是投影坐标系，也可以设置为经纬度空间坐标系值为1
+        anchors: [-25, 50],//锚点，设置Marker的整体偏移，取值规则和imageSize设置的宽高有关，图片的左上角会对准标注点的坐标位置。示例设置规则：x=-imageSize.width/2，y=imageSize.height
+        imageSize: [50, 50],//图片的尺寸
+        hoverImageSize: [50, 50],//鼠标悬停时显示的图片尺寸
+        range: [1, 10000],//可视范围
+        imagePath: HostConfig.Path + '/samples/images/tag.png',//显示图片路径
+        hoverImagePath: HostConfig.Path + '/samples/images/hilightarea.png',// 鼠标悬停时显示的图片路径
+        fixedSize: true,//图片固定尺寸，取值范围：false 自适应，近大远小，true 固定尺寸，默认值：false 
+
+        text: '北京银行',//显示的文字 
+        useTextAnimation: false,//关闭文字展开动画效果 打开会影响效率
+        textRange: [1, 1000],//文本可视范围[近裁距离, 远裁距离]
+        textOffset: [0, 0],// 文本偏移
+        textBackgroundColor: Color.SpringGreen,//文本背景颜色
+        fontSize: 24,//字体大小
+        fontOutlineSize: 1,//字体轮廓线大小
+        fontColor: Color.White,//字体颜色
+        fontOutlineColor: Color.Black,//字体轮廓线颜色
+
+        popupURL: HostConfig.Path + '/samples/popup/interact.html',//弹窗HTML链接
+        popupBackgroundColor: [1.0, 1.0, 1.0, 0.5],//弹窗背景颜色
+        popupSize: [300, 300],//弹窗大小
+        popupOffset: [0, 0],//弹窗偏移
+
+        showLine: true,//标注点下方是否显示垂直牵引线
+        lineSize: [2, 100],//垂直牵引线宽度和高度[width, height]
+        lineColor: Color.SpringGreen,//垂直牵引线颜色
+        lineOffset: [0, 0],//垂直牵引线偏移
+
+        autoHidePopupWindow: true,//失去焦点后是否自动关闭弹出窗口
+        autoHeight: false,// 自动判断下方是否有物体
+        displayMode: 4,//智能显示模式  开发过程中请根据业务需求判断使用四种显示模式 
+        clusterByImage: true,// 聚合时是否根据图片路径分类，即当多个marker的imagePath路径参数相同时按路径对marker分类聚合
+        priority: 0,//避让优先级
+        occlusionCull: false//是否参与遮挡剔除
+    };
+    await __g.marker.add(o1);
+    ```
      *
      * @param data 标注点的数据，可以是Object类型或者Array类型
      * @param fn
