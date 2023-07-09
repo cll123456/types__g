@@ -23,6 +23,10 @@ export interface BaseResult {
      * 时间戳
      */
     timestamp: number
+    /**
+     * 返回的详细信息
+     */
+    data?: any
 }
 
 /**
