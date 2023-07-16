@@ -86,275 +86,166 @@ export interface IPolyline {
 
 
     /**
-     *focus(ids, distance, flyTime, rotation, fn)
-    自动定位到合适的观察距离
-
-    Parameters:
-    Name	Type	Description
-    
-    ids	string | array	
-    Polyline对象的ID或者ID数组
-
-    distance	number	
-    可选参数，观察点距离目标点（被拍摄物体）的距离，取值范围：[0.01~任意正数]，如果设置为0或者不设置，系统自动计算
-
-    flyTime	number	
-    可选参数，相机飞行的时间，取值范围：[0~任意正数]，单位：秒，默认值2秒
-
-    rotation	array	
-    可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0]
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 自动定位到合适的观察距离
+     * 
+     * @param ids 
+     * @param distance 
+     * @param flyTime 
+     * @param rotation 
+     * @param fn 
+     * @returns 
      */
     focus: (ids: string | string[], distance?: number, flyTime?: number, rotation?: number[], fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * get(ids, fn)
-    根据ID获取Polyline的详细信息
-
-    Parameters:
-    Name	Type	Description
-
-    ids	string | array	
-    要获取的Polyline对象ID或者ID数组（可以获取一个或者多个）
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 根据ID获取Polyline的详细信息
+     * 
+     * @param ids 
+     * @param fn 
+     * @returns 
      */
     get: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * hide(ids, fn)
-    隐藏Polyline
-
-    Parameters:
-    Name	Type	Description
-
-    ids	string | array	
-    Polyline对象的ID或者ID数组
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 隐藏Polyline
+     * 
+     * @param ids 
+     * @param fn 
+     * @returns 
      */
     hide: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * hideAll(fn)
-    隐藏所有Polyline
-
-    Parameters:
-    Name	Type	Description
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 隐藏所有Polyline
+     * 
+     * @param fn 
+     * @returns 
      */
     hideAll: (fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * setBrightness(id, newVal, fn)
-    设置新的亮度
-
-    Parameters:
-    Name	Type	Description
-
-    id	string	
-    字符串类型的ID
-    newVal	number	
-    新值
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 设置新的亮度
+     * 
+     * @param id 
+     * @param newVal 
+     * @param fn 
+     * @returns 
      */
     setBrightness: (id: string, newVal: number, fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * setColor(id, newVal, fn)
-    设置新的颜色值
-
-    Parameters:
-    Name	Type	Description
-
-    id	string	
-    字符串类型的ID
-
-    newVal	Color	
-    新颜色值，支持四种格式，取值示例
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 设置新的颜色值
+     * 
+     * @param id 
+     * @param newVal 
+     * @param fn 
+     * @returns 
      */
     setColor: (id: string, newVal: EColor, fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * setCoordinates(id, newVal, fn)
-    设置坐标值
-
-    Parameters:
-    Name	Type	Description
-
-    id	string	
-    字符串类型的ID
-
-    newVal	array	
-    新坐标值，取值示例
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 设置坐标值
+     * 
+     * @param id 
+     * @param newVal 
+     * @param fn 
+     * @returns 
      */
     setCoordinates: (id: string, newVal: number[], fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * setDepth(id, newVal, fn)
-    设置是否做深度检测
-
-    Parameters:
-    Name	Type	Description
-
-    id	string	
-    字符串类型的ID
-
-    newVal	boolean	
-    是否做深度检测
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 设置是否做深度检测
+     * 
+     * @param id 
+     * @param newVal 
+     * @param fn 
+     * @returns 
      */
     setDepth: (id: string, newVal: boolean, fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * setFlowRate(id, newVal, fn)
-    设置新的流速
-
-    Parameters:
-    Name	Type	Description
-
-    id	string	
-    字符串类型的ID
-
-    newVal	number	
-    新值
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 设置新的流速
+     * 
+     * @param id 
+     * @param newVal 
+     * @param fn 
+     * @returns 
      */
     setFlowRate: (id: string, newVal: number, fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * setShape(id, newVal, fn)
-     设置shape新的样式
- 
-     Parameters:
-     Name	Type	Description
-
-     id	string	
-     字符串类型的ID
- 
-     newVal	number	
-     新值， 0： 直线， 1： 曲线
- 
-     fn	function	
-     可选的回调函数，请参考二次开发：异步接口调用方式
+     * 设置shape新的样式
+     * 
+     * @param id 
+     * @param newVal 
+     * @param fn 
+     * @returns 
      */
     setShape: (id: string, newVal: number, fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * setStyle(id, newVal, fn)
-    设置新的样式
-
-    Parameters:
-    Name	Type	Description
-
-    id	string	
-    字符串类型的ID
-
-    newVal	number	
-    PolylineStyle新样式，取值范围：[0~5]，参考 PolylineStyle
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
-    */
+     * 设置新的样式
+     * 
+     * @param id 
+     * @param newVal 
+     * @param fn 
+     * @returns 
+     */
     setStyle: (id: string, newVal: EPolylineStyle, fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * setThickness(id, newVal, fn)
-    设置新的厚度
-
-    Parameters:
-    Name	Type	Description
-
-    id	string	
-    字符串类型的ID
-
-    newVal	number	
-    新值
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 设置新的厚度
+     * 
+     * @param id 
+     * @param newVal 
+     * @param fn 
+     * @returns 
      */
     setThickness: (id: string, newVal: number, fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * showAll(fn)
-    显示所有Polyline
-
-    Parameters:
-    Name	Type	Description
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 显示所有Polyline
+     * 
+     * @param ids 
+     * @param fn 
+     * @returns 
      */
     show: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * show(ids, fn)
-    显示Polyline
-
-    Parameters:
-    Name	Type	Description
-
-    ids	string | array	
-    Polyline对象的ID或者ID数组
-
-    fn	function	
-    可选的回调函数，请参考二次开发：异步接口调用方式
+     * 显示Polyline
+     * 
+     * @param fn 
+     * @returns 
      */
     showAll: (fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-    * 更新一个或多个polyline对象
-    *
-    * ```ts
-     __g.polyline.updateBegin();
-   __g.polyline.setStyle('p1', PolylineStyle.Arrow);//折线样式
-   __g.polyline.setColor('p1', Color.Yellow);
-   __g.polyline.setThickness('p1', 10);
-   __g.polyline.setBrightness('p1', 0.5);
-   __g.polyline.setFlowRate('p1', 0.8);
-   __g.polyline.setDepth('p1', true);//深度检测 会被地面高度遮挡
-   __g.polyline.updateEnd();
-   ```
-    *
-    */
+     * 更新一个或多个polyline对象
+     * 
+     * @param data 
+     * @param fn 
+     * @returns 
+     */
     update: (data: IPolylineOptions | IPolylineOptions[], fn?: () => void | null) => Promise<BaseResult>
 
 
     /**
-     * updateBegin()
-     用于批量多次修改对象的属性
+     *  用于批量多次修改对象的属性
  
      在开始修改之前调用updateBegin，然后可以多次调用setXXX方法，最后调用updateEnd提交修改更新数据
      注意：
@@ -374,16 +265,9 @@ export interface IPolyline {
 
 
     /**
-     * updateEnd(fn)
-     用于批量多次修改对象的属性，与updateBegin配套使用
-     注意：
-     updateEnd是异步调用，可以用回调函数也可以await
- 
-     Parameters:
-     Name	Type	Description
-
-     fn	function	
-     可选的回调函数，请参考二次开发：异步接口调用方式
+     * 用于批量多次修改对象的属性，与updateBegin配套使用
+     * 
+     * @param fn
      */
     updateEnd: (fn?: () => void | null) => Promise<BaseResult>
 }
