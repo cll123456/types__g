@@ -62,7 +62,7 @@ export interface IPolygon3d {
   await __g.polygon3d.add(p3dArr);
   ```
    */
-    add(data: IPolygon3dOptions[], fn?: (() => void) | null): Promise<BaseResult>
+    add(data: IPolygon3dOptions | IPolygon3dOptions[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 删除场景中所有的3DPolygon

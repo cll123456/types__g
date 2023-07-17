@@ -55,6 +55,10 @@ export interface IPolygon3dOptions extends BaseOptions {
      */
     range?: number[]
     /**
+     * 高度
+     */
+    height: number,
+    /**
      * thickness (number) 线宽，单位：米，默认值20
      */
     thickness?: number
@@ -93,7 +97,19 @@ export interface IPolygon3dOptions extends BaseOptions {
     /**
      * vectorParameters (array) 可选参数，仅在设置自定义材质路径后生效，自定义材质矢量类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[{"name":"color1","value":[1,1,1,1]},{"name":"color2","value":[1,0,0,1]}]
      */
-    vectorParameters?: { name: string; value: number }[]
+    vectorParameters?: { name: string; value: number[] }[],
+    /**
+     * generateTop (boolean) 可选参数，设置自定义材质路径后生效，是否生成顶面，默认：true
+     */
+    generateTop?: boolean
+    /**
+     * generateSide (boolean) 可选参数，设置自定义材质路径后生效，是否生成侧面，默认：true
+     */
+    generateSide?: boolean
+    /**
+     * generateBottom (boolean) 可选参数，设置自定义材质路径后生效，是否生成底面，默认：true
+     */
+    generateBottom?: boolean
 }
 
 /**
@@ -170,7 +186,7 @@ export interface I3DPolygonOptions {
     /**
      * vectorParameters (array) 可选参数，仅在设置自定义材质路径后生效，自定义材质矢量类型参数，包含name/value键值对的数组，其中value为数组，格式示例：[{"name":"color1","value":[1,1,1,1]},{"name":"color2","value":[1,0,0,1]}]
      */
-    vectorParameters?: { name: string; value: number }[]
+    vectorParameters?: { name: string; value: number[] }[]
     /**
      * generateTop (boolean) 可选参数，设置自定义材质路径后生效，是否生成顶面，默认：true
      */
