@@ -58,5 +58,5 @@ export interface IBeamOptions extends BaseOptions {
     /**
      * 光流的polyline的坐标数组
      */
-    coordinates?: [number, number, number][]
+    coordinates?: number[]
 }

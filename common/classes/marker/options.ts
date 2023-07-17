@@ -94,23 +94,23 @@ export interface IMarkerOptions extends BaseOptions {
     /**
      * 标注点的位置坐标: [x, y, z]
      */
-    coordinate?: [number, number, number]
+    coordinate?: number[]
     /**
      *  锚点: [x, y]，设置Marker的整体偏移，取值规则和imageSize设置的宽高有关，图片的左上角会对准标注点的坐标位置。示例设置规则：x=-imageSize.width/2，y=imageSize.height
      */
-    anchors?: [number, number]
+    anchors?: number[]
     /**
      * 可视范围: [近裁距离, 远裁距离]，默认值: [10, 10000]
      */
-    range?: [number, number]
+    range?: number[]
     /**
      * 文本可视范围: [近裁距离, 远裁距离]，默认值: [100, 6000]
      */
-    textRange?: [number, number]
+    textRange?: number[]
     /**
      * 图片的尺寸: [width, height]， 默认值[32,32]
      */
-    imageSize?: [number, number]
+    imageSize?: number[]
     /**
      * 图片是否固定尺寸，取值范围：false 自适应，近大远小，true 固定尺寸，默认值：false
      */
@@ -126,7 +126,7 @@ export interface IMarkerOptions extends BaseOptions {
     /**
      * 鼠标悬停时显示的图片尺寸: [width, height]， 默认值：[0,0] 使用图片自身的尺寸，注意：如果设置的值比imageSize尺寸小，则默认使用imageSize的尺寸。
      */
-    hoverImageSize?: [number, number]
+    hoverImageSize?: number[]
     /**
      * 显示的文字
      */
@@ -138,7 +138,7 @@ export interface IMarkerOptions extends BaseOptions {
     /**
      * 文本偏移: [x, y]，默认值：[0,0]
      */
-    textOffset?: [number, number]
+    textOffset?: number[]
     /**
      * 字体大小，默认值：12
      */
@@ -170,11 +170,11 @@ export interface IMarkerOptions extends BaseOptions {
     /**
      * 弹窗大小: [width, height]，默认值：[600,400]
      */
-    popupSize?: [number, number]
+    popupSize?: number[]
     /**
      * 弹窗偏移: [x, y]，默认值：[0,0]
      */
-    popupOffset?: [number, number]
+    popupOffset?: number[]
     /**
      * 标注点下方是否显示垂直牵引线，默认不显示：false
      */
@@ -182,7 +182,7 @@ export interface IMarkerOptions extends BaseOptions {
     /**
      * 牵引线粗细[width, height]，默认值：[0,0]，如果要显示牵引线，需要将该属性设置成非0值
      */
-    lineSize?: [number, number]
+    lineSize?: number[]
     /**
      * 牵引线颜色，默认值：白色，支持四种格式
      */
@@ -190,7 +190,7 @@ export interface IMarkerOptions extends BaseOptions {
     /**
      * 牵引线偏移: [x, y]，默认值：[0,0]
      */
-    lineOffset?: [number, number]
+    lineOffset?: number[]
     /**
      * 是否自动关闭弹出窗口，默认值：true
      */

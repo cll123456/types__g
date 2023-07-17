@@ -36,7 +36,7 @@ export interface IHeatmap3d {
      * @param data HeatMap3D对象或数组
      * @param fn 可选的回调函数
      */
-    add: (data: IHeatMap3DOptions | IHeatMap3DOptions[], fn?: () => void | null) => Promise<BaseResult>
+    add: (data: IHeatMap3DOptions | IHeatMap3DOptions[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 动态往HeatMap3D对象内添加三维体素块
@@ -49,7 +49,7 @@ voxels (array) 体素对象坐标数组，包含热力点坐标、热力值影�
      * @param fn 可选的回调函数
      * @returns
      */
-    addVoxels: (data: { id: string; voxels: { coordinate: [number, number, number]; radius: number; heatValue: number; alpha: number }[] }[], fn?: () => void | null) => Promise<BaseResult>
+    addVoxels: (data: { id: string; voxels: { coordinate: number[]; radius: number; heatValue: number; alpha: number }[] }[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 清空场景中所有的HeatMap3D
@@ -57,7 +57,7 @@ voxels (array) 体素对象坐标数组，包含热力点坐标、热力值影�
      * @param fn 可选的回调函数
      * @returns
      */
-    clear: (fn?: () => void | null) => Promise<BaseResult>
+    clear: (fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 删除一个或多个HeatMap3D对象
@@ -66,7 +66,7 @@ voxels (array) 体素对象坐标数组，包含热力点坐标、热力值影�
      * @param fn 可选的回调函数
      * @returns
      */
-    delete: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
+    delete: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 自动定位到合适的观察距离
@@ -78,7 +78,7 @@ voxels (array) 体素对象坐标数组，包含热力点坐标、热力值影�
      * @param fn 可选的回调函数
      * @returns
      */
-    focus: (ids: string | string[], distance?: number, flyTime?: number, rotation?: [number, number, number], fn?: () => void | null) => Promise<BaseResult>
+    focus: (ids: string | string[], distance?: number, flyTime?: number, rotation?: number[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 根据ID获取HeatMap3D的详细信息
@@ -87,7 +87,7 @@ voxels (array) 体素对象坐标数组，包含热力点坐标、热力值影�
      * @param fn 可选的回调函数
      * @returns
      */
-    get: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
+    get: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 隐藏HeatMap3D
@@ -96,7 +96,7 @@ voxels (array) 体素对象坐标数组，包含热力点坐标、热力值影�
      * @param fn 可选的回调函数
      * @returns
      */
-    hide: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
+    hide: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置三维热力图的显示模式
@@ -106,7 +106,7 @@ voxels (array) 体素对象坐标数组，包含热力点坐标、热力值影�
      * @param fn 可选的回调函数
      * @returns
      */
-    setDisplayMode: (id: string, displayMode: number, fn?: () => void | null) => Promise<BaseResult>
+    setDisplayMode: (id: string, displayMode: number, fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 显示HeatMap3D
@@ -115,7 +115,7 @@ voxels (array) 体素对象坐标数组，包含热力点坐标、热力值影�
      * @param fn 可选的回调函数
      * @returns
      */
-    show: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
+    show: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 修改HeatMap3D
@@ -124,5 +124,5 @@ voxels (array) 体素对象坐标数组，包含热力点坐标、热力值影�
      * @param fn 可选的回调函数
      * @returns
      */
-    update: (data: IHeatMap3DOptions | IHeatMap3DOptions[], fn?: () => void | null) => Promise<BaseResult>
+    update: (data: IHeatMap3DOptions | IHeatMap3DOptions[], fn?: (() => void) | null) => Promise<BaseResult>
 }

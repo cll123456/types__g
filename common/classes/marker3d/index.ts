@@ -34,14 +34,14 @@ export interface IMarker3d {
      * @param data 动态标记的数据，可以是Object类型或者Array类型
      * @param fn 可选的回调函数
      */
-    add: (data: IMarker3DOptions | IMarker3DOptions[], fn?: () => void | null) => Promise<BaseResult>
+    add: (data: IMarker3DOptions | IMarker3DOptions[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 清空场景中所有的3D标注
      *
      * @param fn 可选的回调函数
      */
-    clear: (fn?: () => void | null) => Promise<BaseResult>
+    clear: (fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 删除一个或多个3D标注对象
@@ -49,7 +49,7 @@ export interface IMarker3d {
      * @param ids 要删除的3D标注对象的ID或者ID数组（可以删除一个或者多个）
      * @param fn 可选的回调函数
      */
-    delete: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
+    delete: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 根据分组ID删除动态标注
@@ -57,7 +57,7 @@ export interface IMarker3d {
      * @param ids 要删除的3D标注对象的ID或者ID数组（可以删除一个或者多个）
      * @param fn 可选的回调函数
      */
-    deleteByGroupId: (groupId: string, fn?: () => void | null) => Promise<BaseResult>
+    deleteByGroupId: (groupId: string, fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 自动定位到合适的观察距离
@@ -68,7 +68,7 @@ export interface IMarker3d {
      * @param rotation 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0]
      * @param fn 可选的回调函数
      */
-    focus(ids: string | string[], distance?: number, flyTime?: number, rotation?: [number, number, number], fn?: () => void | null): Promise<BaseResult>
+    focus(ids: string | string[], distance?: number, flyTime?: number, rotation?: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 根据ID获取3D标注的详细信息
@@ -76,7 +76,7 @@ export interface IMarker3d {
      * @param ids 要获取的3D标注对象ID或者ID数组（可以获取一个或者多个）
      * @param fn 可选的回调函数
      */
-    get(ids: string | string[], fn?: () => void | null): Promise<BaseResult>
+    get(ids: string | string[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 隐藏3D标注
@@ -84,14 +84,14 @@ export interface IMarker3d {
      * @param ids 3D标注对象的ID或者ID数组
      * @param fn 可选的回调函数
      */
-    hide(ids: string | string[], fn?: () => void | null): Promise<BaseResult>
+    hide(ids: string | string[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 隐藏所有3D标注
      *
      * @param fn 可选的回调函数
      */
-    hideAll(fn?: () => void | null): Promise<BaseResult>
+    hideAll(fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 根据分组ID隐藏动态标注
@@ -99,7 +99,7 @@ export interface IMarker3d {
      * @param groupId 动态标注创建时指定的分组ID
      * @param fn 可选的回调函数
      */
-    hideByGroupId(groupId: string, fn?: () => void | null): Promise<BaseResult>
+    hideByGroupId(groupId: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 显示3D标注
@@ -107,14 +107,14 @@ export interface IMarker3d {
      * @param ids 3D标注对象的ID或者ID数组
      * @param fn 可选的回调函数
      */
-    show(ids: string | string[], fn?: () => void | null): Promise<BaseResult>
+    show(ids: string | string[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 显示所有3D标注
      *
      * @param fn 可选的回调函数
      */
-    showAll(fn?: () => void | null): Promise<BaseResult>
+    showAll(fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 根据分组ID显示动态标注
@@ -122,7 +122,7 @@ export interface IMarker3d {
      * @param groupId 动态标注创建时指定的分组ID
      * @param fn 可选的回调函数
      */
-    showByGroupId(groupId: string, fn?: () => void | null): Promise<BaseResult>
+    showByGroupId(groupId: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 修改一个或多个3D标注对象
@@ -130,5 +130,5 @@ export interface IMarker3d {
      * @param data 3D标注点的数据，参考add方法
      * @param fn 可选的回调函数
      */
-    update(data: IMarker3DOptions | IMarker3DOptions[], fn?: () => void | null): Promise<BaseResult>
+    update(data: IMarker3DOptions | IMarker3DOptions[], fn?: (() => void) | null): Promise<BaseResult>
 }

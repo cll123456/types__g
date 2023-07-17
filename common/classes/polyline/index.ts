@@ -65,184 +65,167 @@ export interface IPolyline {
      * @param fn 可选的回调函数
      * @returns
      */
-    add: (data: IPolylineOptions | IPolylineOptions[], fn?: () => void | null) => Promise<BaseResult>
+    add: (data: IPolylineOptions | IPolylineOptions[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
-    * 删除场景中所有的polyline
-    *
-    * @param fn
-    */
-    clear: (fn?: () => void | null) => Promise<BaseResult>
-
+     * 删除场景中所有的polyline
+     *
+     * @param fn
+     */
+    clear: (fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
-     * 
+     *
      * 删除一个或多个Polyline对象
-     * 
+     *
      * @param ids 要删除的Polyline对象的ID或者ID数组（可以删除一个或者多个）
      * @param fn
      */
-    delete: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
-
+    delete: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 自动定位到合适的观察距离
-     * 
-     * @param ids 
-     * @param distance 
-     * @param flyTime 
-     * @param rotation 
-     * @param fn 
-     * @returns 
+     *
+     * @param ids
+     * @param distance
+     * @param flyTime
+     * @param rotation
+     * @param fn
+     * @returns
      */
-    focus: (ids: string | string[], distance?: number, flyTime?: number, rotation?: number[], fn?: () => void | null) => Promise<BaseResult>
-
+    focus: (ids: string | string[], distance?: number, flyTime?: number, rotation?: number[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 根据ID获取Polyline的详细信息
-     * 
-     * @param ids 
-     * @param fn 
-     * @returns 
+     *
+     * @param ids
+     * @param fn
+     * @returns
      */
-    get: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
-
+    get: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 隐藏Polyline
-     * 
-     * @param ids 
-     * @param fn 
-     * @returns 
+     *
+     * @param ids
+     * @param fn
+     * @returns
      */
-    hide: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
-
+    hide: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 隐藏所有Polyline
-     * 
-     * @param fn 
-     * @returns 
+     *
+     * @param fn
+     * @returns
      */
-    hideAll: (fn?: () => void | null) => Promise<BaseResult>
-
+    hideAll: (fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置新的亮度
-     * 
-     * @param id 
-     * @param newVal 
-     * @param fn 
-     * @returns 
+     *
+     * @param id
+     * @param newVal
+     * @param fn
+     * @returns
      */
-    setBrightness: (id: string, newVal: number, fn?: () => void | null) => Promise<BaseResult>
-
+    setBrightness: (id: string, newVal: number, fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置新的颜色值
-     * 
-     * @param id 
-     * @param newVal 
-     * @param fn 
-     * @returns 
+     *
+     * @param id
+     * @param newVal
+     * @param fn
+     * @returns
      */
-    setColor: (id: string, newVal: EColor, fn?: () => void | null) => Promise<BaseResult>
-
+    setColor: (id: string, newVal: EColor, fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置坐标值
-     * 
-     * @param id 
-     * @param newVal 
-     * @param fn 
-     * @returns 
+     *
+     * @param id
+     * @param newVal
+     * @param fn
+     * @returns
      */
-    setCoordinates: (id: string, newVal: number[], fn?: () => void | null) => Promise<BaseResult>
-
+    setCoordinates: (id: string, newVal: number[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置是否做深度检测
-     * 
-     * @param id 
-     * @param newVal 
-     * @param fn 
-     * @returns 
+     *
+     * @param id
+     * @param newVal
+     * @param fn
+     * @returns
      */
-    setDepth: (id: string, newVal: boolean, fn?: () => void | null) => Promise<BaseResult>
-
+    setDepth: (id: string, newVal: boolean, fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置新的流速
-     * 
-     * @param id 
-     * @param newVal 
-     * @param fn 
-     * @returns 
+     *
+     * @param id
+     * @param newVal
+     * @param fn
+     * @returns
      */
-    setFlowRate: (id: string, newVal: number, fn?: () => void | null) => Promise<BaseResult>
-
+    setFlowRate: (id: string, newVal: number, fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置shape新的样式
-     * 
-     * @param id 
-     * @param newVal 
-     * @param fn 
-     * @returns 
+     *
+     * @param id
+     * @param newVal
+     * @param fn
+     * @returns
      */
-    setShape: (id: string, newVal: number, fn?: () => void | null) => Promise<BaseResult>
-
+    setShape: (id: string, newVal: number, fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置新的样式
-     * 
-     * @param id 
-     * @param newVal 
-     * @param fn 
-     * @returns 
+     *
+     * @param id
+     * @param newVal
+     * @param fn
+     * @returns
      */
-    setStyle: (id: string, newVal: EPolylineStyle, fn?: () => void | null) => Promise<BaseResult>
-
+    setStyle: (id: string, newVal: EPolylineStyle, fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置新的厚度
-     * 
-     * @param id 
-     * @param newVal 
-     * @param fn 
-     * @returns 
+     *
+     * @param id
+     * @param newVal
+     * @param fn
+     * @returns
      */
-    setThickness: (id: string, newVal: number, fn?: () => void | null) => Promise<BaseResult>
-
+    setThickness: (id: string, newVal: number, fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 显示所有Polyline
-     * 
-     * @param ids 
-     * @param fn 
-     * @returns 
+     *
+     * @param ids
+     * @param fn
+     * @returns
      */
-    show: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
-
+    show: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 显示Polyline
-     * 
-     * @param fn 
-     * @returns 
+     *
+     * @param fn
+     * @returns
      */
-    showAll: (fn?: () => void | null) => Promise<BaseResult>
-
+    showAll: (fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 更新一个或多个polyline对象
-     * 
-     * @param data 
-     * @param fn 
-     * @returns 
+     *
+     * @param data
+     * @param fn
+     * @returns
      */
-    update: (data: IPolylineOptions | IPolylineOptions[], fn?: () => void | null) => Promise<BaseResult>
-
+    update: (data: IPolylineOptions | IPolylineOptions[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      *  用于批量多次修改对象的属性
@@ -263,11 +246,10 @@ export interface IPolyline {
      */
     updateBegin: () => void
 
-
     /**
      * 用于批量多次修改对象的属性，与updateBegin配套使用
-     * 
+     *
      * @param fn
      */
-    updateEnd: (fn?: () => void | null) => Promise<BaseResult>
+    updateEnd: (fn?: (() => void) | null) => Promise<BaseResult>
 }

@@ -74,15 +74,15 @@ export interface IMarker3DOptions extends BaseOptions {
     /**
      * 文字位置：[X,Y,Z]，数组元素类型：(number)，取值范围：[任意数值]
      */
-    textLocation?: [number, number, number]
+    textLocation?: number[]
     /**
      * 文字旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]
      */
-    textRotation?: [number, number, number]
+    textRotation?: number[]
     /**
      * 文字缩放：[X,Y,Z]，数组元素类型：(number)，取值范围：[任意正整数]
      */
-    textScale?: [number, number, number]
+    textScale?: number[]
     /**
      * 3D标注展示的特效名称，取值详见Explorer资源面板->动态标记下的显示名称，取值示例：Point_B_特效编号
      */
@@ -98,7 +98,7 @@ export interface IMarker3DOptions extends BaseOptions {
     /**
      * 3D标注的位置坐标: [X,Y,Z]
      */
-    coordinate?: [number, number, number]
+    coordinate?: number[]
     /**
      * 3D标注的坐标系类型，取值范围：0为Projection类型，1为WGS84类型，2为火星坐标系(GCJ02)，3为百度坐标系(BD09)，默认值：0
      */
@@ -106,7 +106,7 @@ export interface IMarker3DOptions extends BaseOptions {
     /**
      * 3D标注的可视距离范围：[min,max]，单位：米
      */
-    range?: [number, number]
+    range?: number[]
     /**
      * 自动判断下方是否有物体，设置正确高度，默认值：false
      */

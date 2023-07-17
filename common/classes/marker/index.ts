@@ -54,14 +54,14 @@ export interface IMarker {
      * @param data 标注点的数据，可以是Object类型或者Array类型
      * @param fn 可选的回调函数
      */
-    add: (data: IMarkerOptions | IMarkerOptions[], fn?: () => void | null) => Promise<BaseResult>
+    add: (data: IMarkerOptions | IMarkerOptions[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 删除场景中所有的标注
      *
      * @param fn 可选的回调函数
      */
-    clear(fn?: () => void | null): Promise<BaseResult>
+    clear(fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 删除一个或多个标注对象
@@ -69,7 +69,7 @@ export interface IMarker {
      * @param ids 要删除的标注对象的ID或者ID数组（可以删除一个或者多个）
      * @param fn 可选的回调函数
      */
-    delete(ids: string | string[], fn?: () => void | null): Promise<BaseResult>
+    delete(ids: string | string[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 根据分组ID删除Marker
@@ -77,7 +77,7 @@ export interface IMarker {
      * @param groupId Marker创建时指定的分组ID
      * @param fn 可选的回调函数
      */
-    deleteByGroupId(groupId: string, fn?: () => void | null): Promise<BaseResult>
+    deleteByGroupId(groupId: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 自动定位到合适的观察距离
@@ -88,7 +88,7 @@ export interface IMarker {
      * @param rotation 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0]
      * @param fn 可选的回调函数
      */
-    focus(ids: string | string[], distance?: number, flyTime?: number, rotation?: [number, number, number], fn?: () => void | null): Promise<BaseResult>
+    focus(ids: string | string[], distance?: number, flyTime?: number, rotation?: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 自动定位到能观察所有Marker对象的合适距离
@@ -98,7 +98,7 @@ export interface IMarker {
      * @param rotation 可选参数，相机旋转的欧拉角：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：Pitch[-90~90] Yaw[-180~180] Roll[0]
      * @param fn 可选的回调函数
      */
-    focusAll(distance?: number, flyTime?: number, rotation?: [number, number, number], fn?: () => void | null): Promise<BaseResult>
+    focusAll(distance?: number, flyTime?: number, rotation?: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 根据ID获取标注的详细信息
@@ -106,7 +106,7 @@ export interface IMarker {
      * @param ids 要获取的标注对象ID或者ID数组（可以获取一个或者多个）
      * @param fn 可选的回调函数
      */
-    get(ids: string | string[], fn?: () => void | null): Promise<BaseResult>
+    get(ids: string | string[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 隐藏标注
@@ -114,21 +114,21 @@ export interface IMarker {
      * @param ids 标注对象的ID或者ID数组
      * @param fn 可选的回调函数
      */
-    hide(ids: string | string[], fn?: () => void | null): Promise<BaseResult>
+    hide(ids: string | string[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 隐藏所有标注
      *
      * @param fn 可选的回调函数
      */
-    hideAll(fn?: () => void | null): Promise<BaseResult>
+    hideAll(fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 隐藏所有标注的弹出窗口
      *
      * @param fn 可选的回调函数
      */
-    hideAllPopupWindow(fn?: () => void | null): Promise<BaseResult>
+    hideAllPopupWindow(fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 根据分组ID隐藏Marker
@@ -136,7 +136,7 @@ export interface IMarker {
      * @param groupId Marker创建时指定的分组ID
      * @param fn 可选的回调函数
      */
-    hideByGroupId(groupId: string, fn?: () => void | null): Promise<BaseResult>
+    hideByGroupId(groupId: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 隐藏指定标注的弹出窗口
@@ -144,7 +144,7 @@ export interface IMarker {
      * @param ids 标注对象的ID或者ID数组
      * @param fn 可选的回调函数
      */
-    hidePopupWindow(ids: string | string[], fn?: () => void | null): Promise<BaseResult>
+    hidePopupWindow(ids: string | string[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置标注的整体偏移量（修改锚点）
@@ -153,7 +153,7 @@ export interface IMarker {
      * @param newVal 锚点新值
      * @param fn 可选的回调函数
      */
-    setAnchors(id: string, newVal: [number, number], fn?: () => void | null): Promise<BaseResult>
+    setAnchors(id: string, newVal: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
    * 设置标注Marker贴合模型对象CustomObject或车辆载具Vehicel，设置后Marker会跟随模型运动
@@ -167,7 +167,7 @@ objectId (string) 贴合的CustomObject自定义对象id或车辆载具Vehicel�
 offset (array) 坐标偏移量，[X,Y,Z]
    * @param fn 可选的回调函数
    */
-    setAttachCustomObject(data: string | [number, number, number] | string[] | [number, number, number][], fn?: () => void | null): Promise<BaseResult>
+    setAttachCustomObject(data: string | number[] | string[] | number[][], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置是否自动关闭标注的弹出窗口
@@ -176,7 +176,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 是否显示垂直牵引线
      * @param fn 可选的回调函数
      */
-    setAutoHidePopupWindow(id: string, newVal: boolean, fn?: () => void | null): Promise<BaseResult>
+    setAutoHidePopupWindow(id: string, newVal: boolean, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置标注的位置
@@ -185,7 +185,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setCoordinate(id: string, newVal: [number, number, number], fn?: () => void | null): Promise<BaseResult>
+    setCoordinate(id: string, newVal: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置标注文本颜色
@@ -194,7 +194,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新颜色值，支持四种格式
      * @param fn 可选的回调函数
      */
-    setFontColor(id: string, newVal: EColor, fn?: () => void | null): Promise<BaseResult>
+    setFontColor(id: string, newVal: EColor, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置字体轮廓线颜色
@@ -203,7 +203,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新颜色值，支持四种格式
      * @param fn 可选的回调函数
      */
-    setFontOutlineColor(id: string, newVal: EColor, fn?: () => void | null): Promise<BaseResult>
+    setFontOutlineColor(id: string, newVal: EColor, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置字体轮廓线大小
@@ -212,7 +212,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setFontOutlineColor(id: string, newVal: number, fn?: () => void | null): Promise<BaseResult>
+    setFontOutlineColor(id: string, newVal: number, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置字体大小
@@ -221,7 +221,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setFontSize(id: string, newVal: number, fn?: () => void | null): Promise<BaseResult>
+    setFontSize(id: string, newVal: number, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置分组
@@ -230,7 +230,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setGroupId(id: string, newVal: string, fn?: () => void | null): Promise<BaseResult>
+    setGroupId(id: string, newVal: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置鼠标悬停时显示的图片路径
@@ -239,7 +239,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setHoverImagePath(id: string, newVal: string, fn?: () => void | null): Promise<BaseResult>
+    setHoverImagePath(id: string, newVal: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置标注的图片
@@ -248,7 +248,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setImagePath(id: string, newVal: string, fn?: () => void | null): Promise<BaseResult>
+    setImagePath(id: string, newVal: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置标注图片的大小
@@ -257,7 +257,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新的尺寸
      * @param fn 可选的回调函数
      */
-    setImageSize(id: string, newVal: [number, number], fn?: () => void | null): Promise<BaseResult>
+    setImageSize(id: string, newVal: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置LineColor
@@ -266,7 +266,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新颜色值，支持四种格式
      * @param fn 可选的回调函数
      */
-    setLineColor(id: string, newVal: EColor, fn?: () => void | null): Promise<BaseResult>
+    setLineColor(id: string, newVal: EColor, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置LineOffset
@@ -275,7 +275,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setLineOffset(id: string, newVal: [number, number], fn?: () => void | null): Promise<BaseResult>
+    setLineOffset(id: string, newVal: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置LineSize
@@ -284,7 +284,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setLineSize(id: string, newVal: [number, number], fn?: () => void | null): Promise<BaseResult>
+    setLineSize(id: string, newVal: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置是否参与遮挡剔除
@@ -293,7 +293,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setOcclusionCull(id: string, newVal: boolean, fn?: () => void | null): Promise<BaseResult>
+    setOcclusionCull(id: string, newVal: boolean, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置弹窗偏移: [x, y]
@@ -302,7 +302,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setPopupOffset(id: string, newVal: [number, number], fn?: () => void | null): Promise<BaseResult>
+    setPopupOffset(id: string, newVal: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置弹窗大小: [width, height]
@@ -311,7 +311,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setPopupSize(id: string, newVal: [number, number], fn?: () => void | null): Promise<BaseResult>
+    setPopupSize(id: string, newVal: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置弹窗HTML链接
@@ -320,7 +320,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setPopupURL(id: string, newVal: string, fn?: () => void | null): Promise<BaseResult>
+    setPopupURL(id: string, newVal: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置避让优先级
@@ -329,7 +329,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setPriority(id: string, newVal: number, fn?: () => void | null): Promise<BaseResult>
+    setPriority(id: string, newVal: number, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置标注的可见范围
@@ -338,7 +338,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新的可见范围值
      * @param fn 可选的回调函数
      */
-    setRange(id: string, newVal: [number, number], fn?: () => void | null): Promise<BaseResult>
+    setRange(id: string, newVal: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置标注的文本
@@ -347,7 +347,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setText(id: string, newVal: string, fn?: () => void | null): Promise<BaseResult>
+    setText(id: string, newVal: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置标注文本的背景颜色
@@ -356,7 +356,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新颜色值，支持四种格式
      * @param fn 可选的回调函数
      */
-    setTextBackgroundColor(id: string, newVal: EColor, fn?: () => void | null): Promise<BaseResult>
+    setTextBackgroundColor(id: string, newVal: EColor, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置文本偏移
@@ -365,7 +365,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setTextOffset(id: string, newVal: [number, number], fn?: () => void | null): Promise<BaseResult>
+    setTextOffset(id: string, newVal: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置文本可视范围: [近裁距离, 远裁距离]
@@ -374,7 +374,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setTextRange(id: string, newVal: [number, number], fn?: () => void | null): Promise<BaseResult>
+    setTextRange(id: string, newVal: number[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置标注的URL
@@ -383,7 +383,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setURL(id: string, newVal: string, fn?: () => void | null): Promise<BaseResult>
+    setURL(id: string, newVal: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 设置用户数据
@@ -392,7 +392,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param newVal 新值
      * @param fn 可选的回调函数
      */
-    setUserData(id: string, newVal: string, fn?: () => void | null): Promise<BaseResult>
+    setUserData(id: string, newVal: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 显示标注
@@ -400,21 +400,21 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param ids 标注对象的ID或者ID数组
      * @param fn 可选的回调函数
      */
-    show(ids: string | string[], fn?: () => void | null): Promise<BaseResult>
+    show(ids: string | string[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 显示所有标注
      *
      * @param fn 可选的回调函数
      */
-    showAll(fn?: () => void | null): Promise<BaseResult>
+    showAll(fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 显示所有标注的弹出窗口
      *
      * @param fn 可选的回调函数
      */
-    showAllPopupWindow(fn?: () => void | null): Promise<BaseResult>
+    showAllPopupWindow(fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 根据分组ID显示Marker
@@ -422,7 +422,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param groupId Marker创建时指定的分组ID
      * @param fn 可选的回调函数
      */
-    showByGroupId(groupId: string, fn?: () => void | null): Promise<BaseResult>
+    showByGroupId(groupId: string, fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 显示指定标注的弹出窗口
@@ -430,7 +430,7 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param ids 标注对象的ID或者ID数组
      * @param fn 可选的回调函数
      */
-    showPopupWindow(ids: string | string[], fn?: () => void | null): Promise<BaseResult>
+    showPopupWindow(ids: string | string[], fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 修改一个或多个标注对象
@@ -438,5 +438,5 @@ offset (array) 坐标偏移量，[X,Y,Z]
      * @param data 标注点的数据，参考add方法
      * @param fn 可选的回调函数
      */
-    update(data: IMarkerOptions | IMarkerOptions[], fn?: () => void | null): Promise<BaseResult>
+    update(data: IMarkerOptions | IMarkerOptions[], fn?: (() => void) | null): Promise<BaseResult>
 }

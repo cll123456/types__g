@@ -60,7 +60,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    add: (id: string, bbox: [number, number, number, number, number, number], range: [number, number], data: { id: string; coordinate: [number, number, number]; radius: number; heatValue: number }[], groupId?: string, userData?: string, style?: number, textureSize?: number, opacityMode?: number, opacityRange?: [number, number], blur?: number, colors?: { gradient: boolean; invalidColor: [number, number, number, number]; colorStops: { value: number; color: [number, number, number, number] }[] }, fn?: () => void | null) => Promise<BaseResult>
+    add: (id: string, bbox: [number, number, number, number, number, number], range: number[], data: { id: string; coordinate: number[]; radius: number; heatValue: number }[], groupId?: string, userData?: string, style?: number, textureSize?: number, opacityMode?: number, opacityRange?: number[], blur?: number, colors?: { gradient: boolean; invalidColor: [number, number, number, number]; colorStops: { value: number; color: [number, number, number, number] }[] }, fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 为HeatMap添加热力点
@@ -70,7 +70,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    addPoints: (id: string, data: { id: string; coordinate: [number, number, number]; radius: number; heatValue: number }[], fn?: () => void | null) => Promise<BaseResult>
+    addPoints: (id: string, data: { id: string; coordinate: number[]; radius: number; heatValue: number }[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 删除场景中所有的HeatMap
@@ -78,7 +78,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    clear: (fn?: () => void | null) => Promise<BaseResult>
+    clear: (fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 删除一个或多个HeatMap对象
@@ -87,7 +87,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    delete: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
+    delete: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 自动定位到合适的观察距离
@@ -99,7 +99,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    focus: (ids: string | string[], distance?: number, flyTime?: number, rotation?: [number, number, number], fn?: () => void | null) => Promise<BaseResult>
+    focus: (ids: string | string[], distance?: number, flyTime?: number, rotation?: number[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 根据ID获取HeatMap的详细信息
@@ -108,7 +108,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    get: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
+    get: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 隐藏HeatMap
@@ -117,7 +117,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    hide: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
+    hide: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 为HeatMap移除热力点
@@ -127,7 +127,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    removePoints: (id: string, pointIds: string | string[], fn?: () => void | null) => Promise<BaseResult>
+    removePoints: (id: string, pointIds: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置BoundingBox 热力点坐标的范围
@@ -137,7 +137,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    setBBox: (id: string, newVal: [number, number, number, number, number, number], fn?: () => void | null) => Promise<BaseResult>
+    setBBox: (id: string, newVal: [number, number, number, number, number, number], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 设置热力值的范围
@@ -147,7 +147,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    setRange: (id: string, newVal: [number, number], fn?: () => void | null) => Promise<BaseResult>
+    setRange: (id: string, newVal: number[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 显示HeatMap
@@ -156,7 +156,7 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    show: (ids: string | string[], fn?: () => void | null) => Promise<BaseResult>
+    show: (ids: string | string[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 修改HeatMap
@@ -168,5 +168,5 @@ colorStops (array) 色卡数组 [{"value":0, "color":[0,0,1,1]}]
      * @param fn 可选的回调函数，请参考二次开发：异步接口调用方式
      * @returns
      */
-    update: (id: string, bbox: [number, number, number, number, number, number], range: [number, number], data: { id: string; coordinate: [number, number, number]; radius: number; heatValue: number }[], fn?: () => void | null) => Promise<BaseResult>
+    update: (id: string, bbox: [number, number, number, number, number, number], range: number[], data: { id: string; coordinate: number[]; radius: number; heatValue: number }[], fn?: (() => void) | null) => Promise<BaseResult>
 }

@@ -23,14 +23,14 @@ export interface IBeam {
      * @param fn 可选的回调函数
      * @returns
      */
-    add: (data: IBeamOptions | IBeamOptions[], fn?: () => void | null) => Promise<BaseResult>
+    add: (data: IBeamOptions | IBeamOptions[], fn?: (() => void) | null) => Promise<BaseResult>
 
     /**
      * 删除场景中所有的Beam
      *
      * @param fn
      */
-    clear(fn?: () => void | null): Promise<BaseResult>
+    clear(fn?: (() => void) | null): Promise<BaseResult>
 
     /**
      * 更新一个或多个Beam对象
@@ -52,5 +52,5 @@ export interface IBeam {
      * @param fn 可选的回调函数
      * @returns
      */
-    update(data: IBeamOptions | IBeamOptions[], fn?: () => void | null): Promise<BaseResult>
+    update(data: IBeamOptions | IBeamOptions[], fn?: (() => void) | null): Promise<BaseResult>
 }

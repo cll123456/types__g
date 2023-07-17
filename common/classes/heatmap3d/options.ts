@@ -73,15 +73,15 @@ export interface IHeatMap3DOptions extends BaseOptions {
     /**
      * 三维热力图坐标位置：[X,Y,Z]，取值示例，数组元素类型：(number)，取值范围：[任意数值]
      */
-    volumeBoxLocation?: [number, number, number]
+    volumeBoxLocation?: number[]
     /**
      * 三维热力图坐标旋转：[Pitch,Yaw,Roll]，数组元素类型：(number)，取值范围：[任意数值]
      */
-    volumeBoxRotation?: [number, number, number]
+    volumeBoxRotation?: number[]
     /**
      * 三维热力图盒子范围：[长,宽,高]，数组元素类型：[任意浮点数]， 单位：米
      */
-    volumeBoxSize?: [number, number, number]
+    volumeBoxSize?: number[]
     /**
      * 三维热力图盒子剖切的bbox范围，注意：仅对displayMode=2盒子模式下生效，取值格式示例：[minX,minY,minZ,maxX,maxY,maxZ]，元素取值范围：[0~volumeBoxSize]
      */
@@ -101,7 +101,7 @@ export interface IHeatMap3DOptions extends BaseOptions {
     /**
      * 热力值的范围：[min,max]，数组元素类型：[任意浮点数]
      */
-    heatValueRange?: [number, number]
+    heatValueRange?: number[]
     /**
      * 体素块的热力值对象，注意：此参数需要根据纯热力值构建
 
@@ -111,7 +111,7 @@ values (array) 体素的热力值，注意：如果某个体素的值不在heatV
 
 alphas (array) 可选参数，透明度数组，不传则默认使用colors的透明度
      */
-    heatValues?: { size: [number, number, number]; values: number[]; alphas?: number[] }
+    heatValues?: { size: number[]; values: number[]; alphas?: number[] }
     /**
      * 三维体素块形状，取值：[0,1,2]，0 : Sphere球（默认值） 1 : Box盒子 2 : 四面体，注意：仅离散点构建时生效
      */
@@ -151,7 +151,7 @@ extent (array) 可选，热力点的盒子范围，即长方体的长宽高：[x
 
 alpha (number) 热力点不透明度
      */
-    voxels?: { coordinate: [number, number, number]; heatValue: number; alpha: number; radius?: number; extent?: [number, number, number] }[]
+    voxels?: { coordinate: number[]; heatValue: number; alpha: number; radius?: number; extent?: number[] }[]
     /**
      * 离散热力点坐标的索引；数组元素类型：(number)；取值示例：[2, 0, 3, 0, 2, 1]，注意：仅在voxelShape=2四面体模式下生效
      */
