@@ -1,6 +1,6 @@
 {
     "name": "types__g",
-    "version": "1.0.4",
+    "version": "1.0.6",
     "description": "__g types checking",
     "type": "module",
     "types": "./index.d.ts",
